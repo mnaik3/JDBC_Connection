@@ -1,10 +1,23 @@
+
+Problem Statement: 
+
+Please modify the PostgreSQL driver source to return outputs in JSON string format.
+
+Solution:
+
+Using Java created a JDBC connection to fecth data from postgresql.
+Used JSON object to fetch data from postgreSQL in JSON format.
+
 Tools Used:
+
+Java JDK 17.0.2
 PostgreSQL 
 PGadmin
 Eclipse IDE
 JDBC driver,Json Simple driver,PostgreSQL Driver
 
 Code Developement:
+
 1. Created a database postgres in pgadmin as postgres.
 2. With Username= postgres, Password=user123
 3. Created Table with name user_table and inserted data in this table.
@@ -20,7 +33,9 @@ Code Developement:
 
 
 Database :
+
 Pgadmin:
+
 <img width="953" alt="image" src="https://user-images.githubusercontent.com/100692886/182290078-bd19f5a1-4848-46a0-a97c-53d2d7352c6b.png">
 
 Output of the Program:
