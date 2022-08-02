@@ -1,3 +1,5 @@
+//Please modify the PostgreSQL driver source to return outputs in JSON string format.
+
 package net.postgresql;
 
 import java.sql.PreparedStatement;
@@ -15,11 +17,13 @@ public class JDBCpostgresqlconnect {
 	 private final String user = "postgres";
 	 private final String password = "user123";
 	 private void connect() {
+		 // Query for fetching required data from postgresql database.
 		 String SQL = "SELECT user_id,name,age, coalesce(phone, ' ') as phone FROM user_table   order by user_id";
 		 try(Connection connection=DriverManager.getConnection(url, user, password);
-				 Statement stmt = connection.createStatement();
+				 Statement stmt = connection.createStatement();		
 	                ResultSet rs = stmt.executeQuery(SQL)
 				 ){
+			 //If connection to database is successful then call function to display data 
 			 display(rs);
 			 
 			 
@@ -31,8 +35,9 @@ public class JDBCpostgresqlconnect {
 		 
 		 private void display(ResultSet rs) throws SQLException{
 			 
+			 //Creating JSON object 
 			 JSONObject jsonObject = new JSONObject();
-		      //Creating a json array
+		      //Creating array
 		      JSONArray array = new JSONArray();
 		      int statuscode=0;
 		      if (rs.next()) {
@@ -57,6 +62,7 @@ public class JDBCpostgresqlconnect {
 			 
 			 jsonObject.put("status_code:",statuscode );
 			 jsonObject.put("Data:", array);
+			 //Printing data from JSON object.
 			 System.out.println(jsonObject.toJSONString(jsonObject));
 	 }
 	 
